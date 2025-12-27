@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tds-proxy"
+version = "1.0.0"
+description = "TDS Protocol Proxy for SAP ASE and IQ databases"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+authors = [
+    {name = "TDS Proxy Team"}
+]
+keywords = ["tds", "sybase", "ase", "iq", "sap", "proxy", "database"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Database",
+    "Topic :: System :: Networking",
+]
+dependencies = [
+    "typer>=0.9.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.10",
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+    "types-PyYAML",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+ssl = [
+    "pyOpenSSL>=23.0.0",
+]
+metrics = [
+    "prometheus-client>=0.15.0",
+]
+
+[project.scripts]
+tds-proxy = "tds_proxy.__main__:app"
+
+[project.urls]
+Homepage = "https://github.com/example/tds-proxy"
+"Bug Reports" = "https://github.com/example/tds-proxy/issues"
+Source = "https://github.com/example/tds-proxy"
+
+[tool.setuptools.packages.find]
+exclude = ["tests", "tests.*"]
+
+
